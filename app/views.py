@@ -6,17 +6,19 @@ from django.http.request import HttpRequest
 
 
 # says hello to requested name
-def hey_you(request: HttpRequest, you) -> HttpResponse:
+def hey_you(request: HttpRequest, you: str) -> HttpResponse:
     return HttpResponse(f"Hey, {you}!")
 
 
 # tells you your age using a target year and a target birthdate
-def age_in(request: HttpRequest, year, birth) -> HttpResponse:
+def age_in(request: HttpRequest, year: int, birth: int) -> HttpResponse:
     new_age = year - birth
     return HttpResponse(new_age)
 
 
-def order_total(request: HttpRequest, burgers, fries, drinks) -> HttpResponse:
+def order_total(
+    request: HttpRequest, burgers: int, fries: int, drinks: int
+) -> HttpResponse:
     burger_total = burgers * 4.5
     fries_total = fries * 1.5
     drinks_total = drinks * 1
